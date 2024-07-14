@@ -6,5 +6,3 @@ class MissingProbability(Exception):
 class InvalidProbability(Exception):
     def __init__(self, c, p):
         super().__init__(f"Probability should be in [0,1], found {p=} for {c=}.")
-
-

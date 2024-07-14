@@ -16,17 +16,15 @@ def set_probability(ins, outs, ps):
 
     return numpy.prod(values)
 
-def brute_force_compliance(
-        pi: TraceFootprint,
-        probs: Dict[int, float]
-):
+
+def brute_force_compliance(pi: TraceFootprint, probs: Dict[int, float]):
     all_constraints = set(probs.keys())
     vio = set([x for x, v in pi.constraints.items() if not v])
 
     n = len(probs)
     P = 0.0
 
-    for world_size in range(0, n+1):
+    for world_size in range(0, n + 1):
         # A world is the set of satisfied constraints
         for world in combinations(all_constraints, world_size):
             world = set(world)

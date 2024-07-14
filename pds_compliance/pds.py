@@ -6,10 +6,12 @@ from itertools import combinations
 import numpy
 from frozendict import frozendict
 
+
 def validate_probabilities(probs: Dict[int, bool]):
     for c, p in probs.items():
         if p < 0 or p > 1:
             raise InvalidProbability(p, c)
+
 
 @dataclass(frozen=True)
 class TraceFootprint:
@@ -17,6 +19,7 @@ class TraceFootprint:
 
     def __getitem__(self, item):
         return self.constraints[item]
+
 
 class AbstractPDS:
     def __init__(self, probs):
@@ -35,7 +38,7 @@ class AbstractPDS:
 
         res = numpy.sum([self.probs[c] for c in constraints])
         add = False
-        for k in range(2, n+1):
+        for k in range(2, n + 1):
             z = 0
             for event in combinations(constraints, k):
                 z += self._subset_product(event[:-1]) * self.probs[event[-1]]
