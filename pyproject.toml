@@ -16,6 +16,7 @@ frozendict = "^2.4.4"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"
+black = "^24.4.2"
 
 
 [build-system]
