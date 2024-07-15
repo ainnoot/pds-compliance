@@ -64,6 +64,7 @@ class AbstractPDS:
         return res
 
     def compliance(self, fp: TraceFootprint):
+        sat = []
         vio = []
 
         for c, _ in fp:
@@ -74,13 +75,23 @@ class AbstractPDS:
 
             # Satisfied crisp constraints do not affect compliance
             if not fp[c]:
-                # Trace violates a crisp constraint
-                # compliance is null
+                # Trace violates a crisp constraint compliance is null
                 if p == 1:
                     return 0.0
                 vio.append(c)
 
+            if fp[c] and p < 1:
+                sat.append(c)
+
         if len(vio) == 0:
             return 1.0
 
-        return 1 - self.__inclusion_exclusion(tuple(sorted(vio)))
+        if len(vio) <= len(sat):
+            return 1 - self.__inclusion_exclusion(tuple(sorted(vio)))
+
+        else:
+            not_vio_world = numpy.prod([1 - self.probs[c] for c in vio])
+            any_sat_world = self.__inclusion_exclusion(tuple(sorted(sat)))
+            null_world = numpy.prod([1 - self.probs[c] for c in sat])
+
+            return not_vio_world * (null_world + any_sat_world)
