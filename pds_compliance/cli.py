@@ -42,7 +42,7 @@ def main():
 
     for trace in traces:
         ans = declare_pds.compliance(trace)
-        print("Compliance:", trace.case_identifier, ans)
+        print(f"Compliance for {trace.case_identifier}: {ans:.5f}")
 
 
 if __name__ == "__main__":
