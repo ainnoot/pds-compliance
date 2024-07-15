@@ -248,7 +248,7 @@ rustxes = "^0.2.2"
 type = "git"
 url = "https://github.com/ainnoot/declasp.git"
 reference = "HEAD"
-resolved_reference = "d69f5e16a472445c9f0093c987ccc5c89c75c490"
+resolved_reference = "9f836ecf20f0d2a4d0a94fa7acec309de0b65b26"
 
 [[package]]
 name = "frozendict"
