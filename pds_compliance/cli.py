@@ -8,8 +8,12 @@ from pds_compliance import DeclarePDS
 
 def parse_args():
     parser = ArgumentParser()
-    parser.add_argument('model', type=str, help="A Declare model in JSON format.")
-    parser.add_argument('log', type=str, help="A file that stores traces as comma-separated values (one per row).")
+    parser.add_argument("model", type=str, help="A Declare model in JSON format.")
+    parser.add_argument(
+        "log",
+        type=str,
+        help="A file that stores traces as comma-separated values (one per row).",
+    )
 
     args = parser.parse_args()
     return args.model, args.log
@@ -23,12 +27,12 @@ def main():
     with open(csv_log) as f:
         traces = [(trace_id, x.strip()) for trace_id, x in enumerate(f.readlines())]
 
-    traces = [Trace.from_csv(t, f'pds-{trace_id}') for trace_id, t in traces]
+    traces = [Trace.from_csv(t, f"pds-{trace_id}") for trace_id, t in traces]
 
     declare_pds = DeclarePDS()
     for constraint in model_json:
         # remove the field that is missing from declasp input format
-        p = constraint.pop('probability')
+        p = constraint.pop("probability")
 
         # parse the standard declare constraint
         declare_constraint = declare_constraint_from_json(constraint)
@@ -41,5 +45,5 @@ def main():
         print("Compliance:", trace.case_identifier, ans)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

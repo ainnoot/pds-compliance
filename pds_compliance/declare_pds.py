@@ -6,6 +6,7 @@ from declasp import Trace
 from declasp.declare import Constraint, Model
 from declasp.tasks import conformance_checking_single_trace
 
+
 class DeclarePDS:
     def __init__(self):
         self.probs = dict()
@@ -20,9 +21,7 @@ class DeclarePDS:
         result = conformance_checking_single_trace(self.model, t)
 
         # create a footprint & standard PDS computation
-        tfp = TraceFootprint({
-            c.id: value for c, value in result.items()
-        })
+        tfp = TraceFootprint({c.id: value for c, value in result.items()})
         pds = AbstractPDS.of(self.probs)
         ans = pds.compliance(tfp)
 
