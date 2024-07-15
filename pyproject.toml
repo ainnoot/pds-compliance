@@ -19,6 +19,9 @@ declasp = {git = "https://github.com/ainnoot/declasp.git"}
 pytest = "^8.2.2"
 black = "^24.4.2"
 
+[tool.poetry.scripts]
+pds-compliance = "pds_compliance:cli.main"
+
 
 [build-system]
 requires = ["poetry-core"]
