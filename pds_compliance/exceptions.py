@@ -1,3 +1,8 @@
+class WrongKey(Exception):
+    def __init__(self, obj):
+        super().__init__(f"Wrong key for {obj=}.")
+
+
 class MissingProbability(Exception):
     def __init__(self, c):
         super().__init__(f"Missing probability for {c=}.")

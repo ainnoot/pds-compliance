@@ -19,7 +19,7 @@ def set_probability(ins, outs, ps):
 
 def brute_force_compliance(pi: TraceFootprint, probs: Dict[int, float]):
     all_constraints = set(probs.keys())
-    vio = set([x for x, v in pi.constraints.items() if not v])
+    vio = set([x for x, v in pi if not v])
 
     n = len(probs)
     P = 0.0

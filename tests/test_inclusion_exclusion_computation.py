@@ -19,37 +19,34 @@ def random_test_case_crisp_allowed(n):
     return random_test_case(n, 0.0, 1.0)
 
 
+def assert_abstract_pds_compliance_match_brute_force_compliance(pi, probs):
+    bfc = brute_force_compliance(pi, probs)
+    p = AbstractPDS.of(probs).compliance(pi)
+    assert p == pytest.approx(bfc, abs=1e-12)
+
 @pytest.mark.parametrize(
     ["pi", "probs"], [random_test_case_no_crisp(5) for _ in range(500)]
 )
 def test_random_small_worlds_no_crisp(pi, probs):
-    bfc = brute_force_compliance(pi, probs)
-    p = AbstractPDS(probs).compliance(pi)
-    assert pytest.approx(abs(bfc - p), abs=1e-12) == 0.0
+    assert_abstract_pds_compliance_match_brute_force_compliance(pi, probs)
 
 
 @pytest.mark.parametrize(
     ["pi", "probs"], [random_test_case_crisp_allowed(5) for _ in range(500)]
 )
 def test_random_small_worlds_crisp_allowed(pi, probs):
-    bfc = brute_force_compliance(pi, probs)
-    p = AbstractPDS(probs).compliance(pi)
-    assert pytest.approx(abs(bfc - p), abs=1e-12) == 0.0
+    assert_abstract_pds_compliance_match_brute_force_compliance(pi, probs)
 
 
 @pytest.mark.parametrize(
     ["pi", "probs"], [random_test_case_no_crisp(20) for _ in range(50)]
 )
 def test_random_big_worlds_no_crisp(pi, probs):
-    bfc = brute_force_compliance(pi, probs)
-    p = AbstractPDS(probs).compliance(pi)
-    assert pytest.approx(abs(bfc - p), abs=1e-12) == 0.0
+    assert_abstract_pds_compliance_match_brute_force_compliance(pi, probs)
 
 
 @pytest.mark.parametrize(
     ["pi", "probs"], [random_test_case_crisp_allowed(20) for _ in range(50)]
 )
 def test_random_big_worlds_crisp_allowed(pi, probs):
-    bfc = brute_force_compliance(pi, probs)
-    p = AbstractPDS(probs).compliance(pi)
-    assert pytest.approx(abs(bfc - p), abs=1e-12) == 0.0
+    assert_abstract_pds_compliance_match_brute_force_compliance(pi, probs)
