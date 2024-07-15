@@ -40,11 +40,13 @@ class AbstractPDS:
         return AbstractPDS(frozendict(probs), key=AbstractPDS.__key)
 
     @lru_cache(None)
-    def _subset_product(self, constraints):
-        return numpy.prod([self.probs[c] for c in constraints])
+    def __subset_product(self, constraints):
+        if len(constraints) == 1:
+            return self.probs[constraints[0]]
+        cached_result = self.__subset_product(constraints[:-1])
+        return cached_result * self.probs[constraints[-1]]
 
-    @lru_cache(None)
-    def _inclusion_exclusion(self, constraints: Tuple[int, ...]):
+    def __inclusion_exclusion(self, constraints: Tuple[int, ...]):
         n = len(constraints)
         if n == 1:
             return self.probs[constraints[0]]
@@ -54,7 +56,7 @@ class AbstractPDS:
         for k in range(2, n + 1):
             z = 0
             for event in combinations(constraints, k):
-                z += self._subset_product(event[:-1]) * self.probs[event[-1]]
+                z += self.__subset_product(event)
 
             res = (res + z) if add else (res - z)
             add = not add
@@ -81,4 +83,4 @@ class AbstractPDS:
         if len(vio) == 0:
             return 1.0
 
-        return 1 - self._inclusion_exclusion(tuple(sorted(vio)))
+        return 1 - self.__inclusion_exclusion(tuple(sorted(vio)))
