@@ -1,8 +1,9 @@
 import json
+import sys
 from argparse import ArgumentParser
-
-from declasp import Trace, StringEventLog
-from declasp.declare import declare_model_from_json, declare_constraint_from_json
+import json
+from declasp import Trace
+from declasp.declare import declare_constraint_from_json
 from pds_compliance import DeclarePDS
 
 
@@ -40,9 +41,13 @@ def main():
         # add it into the pds with an associated probability
         declare_pds.add_constraint(declare_constraint, p)
 
+    ans = dict()
     for trace in traces:
-        ans = declare_pds.compliance(trace)
-        print(f"Compliance for {trace.case_identifier}: {ans:.5f}")
+        compliance = declare_pds.compliance(trace)
+        ans[trace.case_identifier] = round(compliance, 5)
+
+    print(json.dumps(ans, indent=2))
+    sys.exit(0)
 
 
 if __name__ == "__main__":
