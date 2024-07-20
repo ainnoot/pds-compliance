@@ -1,10 +1,11 @@
 from dataclasses import dataclass, InitVar
-from functools import lru_cache
+from functools import cache
 from typing import Dict, Tuple
 from pds_compliance.exceptions import *
 from itertools import combinations
-import numpy
+from functools import reduce
 from frozendict import frozendict
+from collections import defaultdict
 
 
 def validate_probabilities(probs: frozendict[int, float]):
@@ -39,24 +40,21 @@ class AbstractPDS:
     def of(probs: dict[int, float]):
         return AbstractPDS(frozendict(probs), key=AbstractPDS.__key)
 
-    @lru_cache(None)
-    def __subset_product(self, constraints):
-        if len(constraints) == 1:
-            return self.probs[constraints[0]]
-        cached_result = self.__subset_product(constraints[:-1])
-        return cached_result * self.probs[constraints[-1]]
+    def __setproduct(self, values):
+        return reduce(lambda x, y: x * y, values, 1)
 
     def __inclusion_exclusion(self, constraints: Tuple[int, ...]):
         n = len(constraints)
         if n == 1:
             return self.probs[constraints[0]]
 
-        res = numpy.sum([self.probs[c] for c in constraints])
+        probs = [self.probs[c] for c in constraints]
+        res = sum(probs)
         add = False
         for k in range(2, n + 1):
             z = 0
-            for event in combinations(constraints, k):
-                z += self.__subset_product(event)
+            for event in combinations(probs, k):
+                z += self.__setproduct(event)
 
             res = (res + z) if add else (res - z)
             add = not add
@@ -90,8 +88,8 @@ class AbstractPDS:
             return 1 - self.__inclusion_exclusion(tuple(sorted(vio)))
 
         else:
-            not_vio_world = numpy.prod([1 - self.probs[c] for c in vio])
+            not_vio_world = self.__setproduct([1 - self.probs[c] for c in vio])
             any_sat_world = self.__inclusion_exclusion(tuple(sorted(sat)))
-            null_world = numpy.prod([1 - self.probs[c] for c in sat])
+            null_world = self.__setproduct([1 - self.probs[c] for c in sat])
 
             return not_vio_world * (null_world + any_sat_world)

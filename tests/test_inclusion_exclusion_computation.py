@@ -24,6 +24,7 @@ def assert_abstract_pds_compliance_match_brute_force_compliance(pi, probs):
     p = AbstractPDS.of(probs).compliance(pi)
     assert p == pytest.approx(bfc, abs=1e-12)
 
+
 @pytest.mark.parametrize(
     ["pi", "probs"], [random_test_case_no_crisp(5) for _ in range(500)]
 )
