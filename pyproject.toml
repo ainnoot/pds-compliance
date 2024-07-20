@@ -4,7 +4,7 @@ version = "0.0.3"
 description = ""
 authors = [
 	"Mario Alviano <mario.alviano@gmail.com>",
-	"ainnoot <ai6chr+github@gmail.com>"
+	"Antonio Ielo <antonio.ielo@unical.it>"
 ]
 
 readme = "README.md"
@@ -19,7 +19,7 @@ pytest = "^8.2.2"
 black = "^24.4.2"
 
 [tool.poetry.scripts]
-pds-compliance = "pds_compliance:cli.main"
+pds-declare-compliance = "pds_compliance:cli.main"
 
 
 [build-system]
