@@ -28,7 +28,7 @@ def main():
     with open(csv_log) as f:
         traces = [(trace_id, x.strip()) for trace_id, x in enumerate(f.readlines())]
 
-    traces = [Trace.from_csv(t, f"pds-{trace_id}") for trace_id, t in traces]
+    traces = [Trace.from_csv(t, f"{model_json_path.stem}-{trace_id}") for trace_id, t in traces]
 
     declare_pds = DeclarePDS()
     for constraint in model_json:
