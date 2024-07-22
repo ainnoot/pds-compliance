@@ -1,0 +1,290 @@
+[
+  {
+    "template": "Precedence",
+    "arguments": [
+      "Leucocytes",
+      "Admission NC"
+    ],
+    "support": 0.758095238095238
+  },
+  {
+    "template": "Alternate Response",
+    "arguments": [
+      "ER Registration",
+      "Leucocytes"
+    ],
+    "support": 0.96
+  },
+  {
+    "template": "Precedence",
+    "arguments": [
+      "ER Sepsis Triage",
+      "Admission NC"
+    ],
+    "support": 0.7561904761904762
+  },
+  {
+    "template": "Alternate Precedence",
+    "arguments": [
+      "ER Registration",
+      "ER Triage"
+    ],
+    "support": 0.9914285714285714
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "LacticAcid",
+      "CRP"
+    ],
+    "support": 0.819047619047619
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "ER Sepsis Triage",
+      "Leucocytes"
+    ],
+    "support": 0.9628571428571429
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "IV Antibiotics",
+      "LacticAcid"
+    ],
+    "support": 0.7514285714285714
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "CRP",
+      "ER Sepsis Triage"
+    ],
+    "support": 0.9580952380952381
+  },
+  {
+    "template": "Precedence",
+    "arguments": [
+      "CRP",
+      "Admission NC"
+    ],
+    "support": 0.7533333333333333
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "Leucocytes",
+      "CRP"
+    ],
+    "support": 0.9580952380952381
+  },
+  {
+    "template": "Alternate Response",
+    "arguments": [
+      "ER Registration",
+      "ER Sepsis Triage"
+    ],
+    "support": 0.9923809523809524
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "LacticAcid",
+      "Leucocytes"
+    ],
+    "support": 0.819047619047619
+  },
+  {
+    "template": "Precedence",
+    "arguments": [
+      "ER Registration",
+      "LacticAcid"
+    ],
+    "support": 0.8161904761904762
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "Leucocytes",
+      "ER Triage"
+    ],
+    "support": 0.9638095238095238
+  },
+  {
+    "template": "Precedence",
+    "arguments": [
+      "ER Triage",
+      "Admission NC"
+    ],
+    "support": 0.7619047619047619
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "ER Sepsis Triage",
+      "CRP"
+    ],
+    "support": 0.9580952380952381
+  },
+  {
+    "template": "Alternate Precedence",
+    "arguments": [
+      "ER Registration",
+      "IV Antibiotics"
+    ],
+    "support": 0.7819047619047619
+  },
+  {
+    "template": "Precedence",
+    "arguments": [
+      "ER Registration",
+      "Leucocytes"
+    ],
+    "support": 0.9371428571428572
+  },
+  {
+    "template": "Precedence",
+    "arguments": [
+      "ER Registration",
+      "Admission NC"
+    ],
+    "support": 0.7619047619047619
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "ER Triage",
+      "Leucocytes"
+    ],
+    "support": 0.9638095238095238
+  },
+  {
+    "template": "Alternate Precedence",
+    "arguments": [
+      "ER Registration",
+      "ER Sepsis Triage"
+    ],
+    "support": 0.9923809523809524
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "LacticAcid",
+      "ER Sepsis Triage"
+    ],
+    "support": 0.8180952380952381
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "CRP",
+      "Leucocytes"
+    ],
+    "support": 0.9580952380952381
+  },
+  {
+    "template": "Alternate Precedence",
+    "arguments": [
+      "ER Triage",
+      "ER Sepsis Triage"
+    ],
+    "support": 0.9828571428571429
+  },
+  {
+    "template": "Alternate Response",
+    "arguments": [
+      "ER Triage",
+      "ER Sepsis Triage"
+    ],
+    "support": 0.98
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "IV Antibiotics",
+      "Leucocytes"
+    ],
+    "support": 0.7838095238095238
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "ER Triage",
+      "CRP"
+    ],
+    "support": 0.959047619047619
+  },
+  {
+    "template": "Precedence",
+    "arguments": [
+      "ER Registration",
+      "CRP"
+    ],
+    "support": 0.9361904761904762
+  },
+  {
+    "template": "Alternate Response",
+    "arguments": [
+      "ER Registration",
+      "ER Triage"
+    ],
+    "support": 0.9942857142857143
+  },
+  {
+    "template": "Precedence",
+    "arguments": [
+      "ER Triage",
+      "LacticAcid"
+    ],
+    "support": 0.7828571428571428
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "IV Antibiotics",
+      "CRP"
+    ],
+    "support": 0.7838095238095238
+  },
+  {
+    "template": "Alternate Precedence",
+    "arguments": [
+      "ER Sepsis Triage",
+      "IV Antibiotics"
+    ],
+    "support": 0.7838095238095238
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "CRP",
+      "ER Triage"
+    ],
+    "support": 0.959047619047619
+  },
+  {
+    "template": "Alternate Response",
+    "arguments": [
+      "ER Registration",
+      "CRP"
+    ],
+    "support": 0.9561904761904761
+  },
+  {
+    "template": "Responded Existence",
+    "arguments": [
+      "Leucocytes",
+      "ER Sepsis Triage"
+    ],
+    "support": 0.9628571428571429
+  },
+  {
+    "template": "Alternate Precedence",
+    "arguments": [
+      "ER Triage",
+      "IV Antibiotics"
+    ],
+    "support": 0.7771428571428571
+  }
+]
