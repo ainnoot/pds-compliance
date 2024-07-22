@@ -17,9 +17,7 @@ def parse_args():
     p.add_argument(
         "trace_per_step", type=int, help="How many traces to sample for each step."
     )
-    p.add_argument(
-        "output_file", type=str, help="Output file to store results"
-    )
+    p.add_argument("output_file", type=str, help="Output file to store results")
 
     return p.parse_args()
 
@@ -55,7 +53,7 @@ if __name__ == "__main__":
     P = pds_per_model = args.pds_per_step
     C = trials = args.trace_per_step
 
-    output_file = open(args.output_file, 'w')
+    output_file = open(args.output_file, "w")
 
     print("size,runtime", file=output_file)
     for e in N:
