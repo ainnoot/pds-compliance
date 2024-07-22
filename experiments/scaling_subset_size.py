@@ -17,6 +17,9 @@ def parse_args():
     p.add_argument(
         "trace_per_step", type=int, help="How many traces to sample for each step."
     )
+    p.add_argument(
+        "output_file", type=str, help="Output file to store results"
+    )
 
     return p.parse_args()
 
@@ -52,11 +55,12 @@ if __name__ == "__main__":
     P = pds_per_model = args.pds_per_step
     C = trials = args.trace_per_step
 
-    print("max_size,average_time,std_dev")
+    output_file = open(args.output_file, 'w')
+
+    print("size,runtime", file=output_file)
     for e in N:
         n = e * 2
         fp = trace_footprint_with_h(n, e)
-        times = []
         for pid in range(P):
             pds_probs = generate_random_pds_probs(n, 0.05, 0.95)
             for c in range(C):
@@ -66,7 +70,6 @@ if __name__ == "__main__":
                 end = perf_counter()
 
                 elapsed = end - start
-                times.append(elapsed)
+                print(f"{e},{elapsed:.5f}", file=output_file)
 
-        avg, std = float(numpy.mean(times)), float(numpy.std(times))
-        print(f"{e},{avg:.5f},{std:.5f}")
+    output_file.close()
