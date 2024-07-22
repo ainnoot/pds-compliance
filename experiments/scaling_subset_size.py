@@ -69,5 +69,8 @@ if __name__ == "__main__":
 
                 elapsed = end - start
                 print(f"{e},{elapsed:.5f}", file=output_file)
+                output_file.flush()
+        print("done wih effective size:", e)
 
+    output_file.flush()
     output_file.close()

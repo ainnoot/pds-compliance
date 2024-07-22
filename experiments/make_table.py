@@ -13,4 +13,7 @@ if __name__ == "__main__":
 
     for _, row in table_df.iterrows():
         size, avg_runtime, std_runtime = row
+        size = int(size)
+        avg_runtime = round(avg_runtime, 5)
+        std_runtime = round(std_runtime, 5)
         print(f"{size} & {avg_runtime:.5f} & {std_runtime:.5f} \\\\")
