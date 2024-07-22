@@ -1,6 +1,6 @@
 from itertools import combinations
 from typing import Dict
-import numpy
+from functools import reduce
 from pds_compliance.pds import TraceFootprint
 
 
@@ -14,7 +14,7 @@ def set_probability(ins, outs, ps):
     for c in outs:
         values.append(1 - ps[c])
 
-    return numpy.prod(values)
+    return reduce(lambda x, y: x * y, values, 1)
 
 
 def brute_force_compliance(pi: TraceFootprint, probs: Dict[int, float]):
