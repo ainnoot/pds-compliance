@@ -12,7 +12,6 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 frozendict = "^2.4.4"
-declasp = {git = "https://github.com/ainnoot/declasp.git"}
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"
