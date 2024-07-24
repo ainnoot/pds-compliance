@@ -4,6 +4,7 @@ from declasp.tasks import ConformanceCheckingResult
 from declasp.log import StringEventLog
 from declasp.declare import declare_model_from_json
 import json
+from pathlib import Path
 
 from pds_compliance import AbstractPDS, TraceFootprint
 from collections import defaultdict
@@ -12,7 +13,8 @@ from time import perf_counter
 
 if __name__ == "__main__":
 	if len(sys.argv) != 4:
-		print("Usage: {} [model] [log] [outputfile]".format(__file__))
+		print("Usage: {} [model] [log] [outputfile]".format(Path(__file__).name))
+		sys.exit(1)
 
 
 	start = perf_counter()
@@ -49,7 +51,7 @@ if __name__ == "__main__":
 		footprints[fp].append(tid)
 
 	# we perform compliance computation only for unique traces
-	print("Total (unique) traces:", len(footprints))
+	print("Total (unique) footprints:", len(footprints))
 
 	print("[defining input for pds-compliance] elapsed: {:.3f}s".format(perf_counter() - start))
 	start = perf_counter()
